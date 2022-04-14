@@ -210,7 +210,7 @@
 							<div style="padding:20px"></div>
 							<iframe width="800" height="486" src="https://app.powerbi.com/view?r=eyJrIjoiZGIxYTc0YWEtZTFmMC00ZWQ1LWE3MTQtNWRiN2ExYzVmZWQ1IiwidCI6IjUwNzIzZDNjLTEzYWYtNGRiOS05YzBiLTc4NmNkMmI0YjBjMCJ9&pageName=ReportSectione885562009f093b9c46c" frameborder="0" allowFullScreen="true"></iframe>
 							<div style="padding:20px"></div>
-						<h3 class="mb-5"> Python(pandas)Exploratory Analysis (code follow along) - Netflix Usage </h3>
+						<h3 class="mb-5"> Python(pandas) Exploratory Analysis (code follow along) - Netflix Usage </h3>
 							<div style="padding:10px"></div>
 							<p> Exploratory Analysis of flatmates Netflix account usage from 2016-2020 using Python and Jupyter Notebook.</p>
 							<a href="assets/AleeshaNetflix.html" target="_blank">Click here to view page (new window) </a>
