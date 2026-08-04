@@ -1,42 +1,78 @@
-/*!
-    * Start Bootstrap - Resume v6.0.2 (https://startbootstrap.com/theme/resume)
-    * Copyright 2013-2020 Start Bootstrap
-    * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-resume/blob/master/LICENSE)
-    */
-    (function ($) {
-    "use strict"; // Start of use strict
+/*
+ * Lightweight navigation for the portfolio site.
+ * Uses browser APIs directly, with no jQuery or Bootstrap JavaScript dependency.
+ */
+(function () {
+    "use strict";
 
-    // Smooth scrolling using jQuery easing
-    $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function () {
-        if (
-            location.pathname.replace(/^\//, "") ==
-                this.pathname.replace(/^\//, "") &&
-            location.hostname == this.hostname
-        ) {
-            var target = $(this.hash);
-            target = target.length
-                ? target
-                : $("[name=" + this.hash.slice(1) + "]");
-            if (target.length) {
-                $("html, body").animate(
-                    {
-                        scrollTop: target.offset().top,
-                    },
-                    1000,
-                    "easeInOutExpo"
-                );
-                return false;
+    const menuButton = document.querySelector(".navbar-toggler");
+    const menu = document.getElementById("navbarSupportedContent");
+    const navLinks = Array.from(document.querySelectorAll("#sideNav .nav-link"));
+
+    function setMenuOpen(isOpen) {
+        if (!menuButton || !menu) return;
+
+        menu.classList.toggle("show", isOpen);
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+    }
+
+    if (menuButton && menu) {
+        menuButton.addEventListener("click", function () {
+            setMenuOpen(!menu.classList.contains("show"));
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape" && menu.classList.contains("show")) {
+                setMenuOpen(false);
+                menuButton.focus();
             }
-        }
+        });
+    }
+
+    navLinks.forEach(function (link) {
+        link.addEventListener("click", function () {
+            setMenuOpen(false);
+        });
     });
 
-    // Closes responsive menu when a scroll trigger link is clicked
-    $(".js-scroll-trigger").click(function () {
-        $(".navbar-collapse").collapse("hide");
-    });
+    const sections = navLinks
+        .map(function (link) {
+            return document.querySelector(link.getAttribute("href"));
+        })
+        .filter(Boolean);
 
-    // Activate scrollspy to add active class to navbar items on scroll
-    $("body").scrollspy({
-        target: "#sideNav",
-    });
-})(jQuery); // End of use strict
+    if ("IntersectionObserver" in window && sections.length > 0) {
+        const observer = new IntersectionObserver(
+            function (entries) {
+                const visibleSection = entries
+                    .filter(function (entry) {
+                        return entry.isIntersecting;
+                    })
+                    .sort(function (a, b) {
+                        return b.intersectionRatio - a.intersectionRatio;
+                    })[0];
+
+                if (!visibleSection) return;
+
+                navLinks.forEach(function (link) {
+                    const isActive = link.getAttribute("href") === `#${visibleSection.target.id}`;
+                    link.classList.toggle("active", isActive);
+
+                    if (isActive) {
+                        link.setAttribute("aria-current", "page");
+                    } else {
+                        link.removeAttribute("aria-current");
+                    }
+                });
+            },
+            {
+                rootMargin: "-20% 0px -55% 0px",
+                threshold: [0.1, 0.35, 0.6],
+            }
+        );
+
+        sections.forEach(function (section) {
+            observer.observe(section);
+        });
+    }
+})();
