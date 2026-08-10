@@ -85,8 +85,17 @@ assert(
 );
 assert.equal(
     (html.match(/class="portfolio-screenshot"/g) ?? []).length,
+    8,
+    "The Reconcile and Blake Twigden portfolio entries must include eight screenshots"
+);
+assert(
+    html.indexOf('id="reconcile-gtfs-comparator"') < html.indexOf('id="blake-twigden-website"'),
+    "Reconcile must appear before the Blake Twigden website in the portfolio"
+);
+assert.equal(
+    (html.match(/assets\/img\/blake-twigden\/[^" ]+-preview\.webp/g) ?? []).length,
     4,
-    "The Reconcile portfolio entry must include four screenshots"
+    "The Blake Twigden portfolio entry must include four preview images"
 );
 
 console.log(
