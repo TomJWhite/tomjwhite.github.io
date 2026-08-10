@@ -79,6 +79,16 @@ for (const portfolioEntryId of ["blake-twigden-website", "reconcile-gtfs-compara
     );
 }
 
+assert(
+    html.includes('href="https://reconcile-gtfs.tomjwhite.chatgpt.site/"'),
+    "Missing the live Reconcile link"
+);
+assert.equal(
+    (html.match(/class="portfolio-screenshot"/g) ?? []).length,
+    4,
+    "The Reconcile portfolio entry must include four screenshots"
+);
+
 console.log(
     `Site checks passed: ${ids.length} IDs, ${internalAnchors.length} anchors, ${localReferences.length} local files.`
 );
