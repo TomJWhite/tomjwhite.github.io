@@ -63,13 +63,21 @@ assert(
 );
 
 const analyticsScriptHash = createHash("sha256")
-    .update(inlineScripts[0][1], "utf8")
+    .update(inlineScripts[0][1].replace(/\r\n/g, "\n"), "utf8")
     .digest("base64");
 assert(
     html.includes(`'sha256-${analyticsScriptHash}'`),
     "The Content Security Policy must contain the exact inline analytics script hash"
 );
 assert(!existsSync(resolve(repositoryRoot, "index.html.bak")), "Backup HTML must not be published");
+
+for (const portfolioEntryId of ["blake-twigden-website", "reconcile-gtfs-comparator"]) {
+    assert(
+        html.includes(`class="portfolio-item" aria-labelledby="${portfolioEntryId}"`) &&
+            html.includes(`id="${portfolioEntryId}"`),
+        `Missing dedicated portfolio entry: ${portfolioEntryId}`
+    );
+}
 
 console.log(
     `Site checks passed: ${ids.length} IDs, ${internalAnchors.length} anchors, ${localReferences.length} local files.`
