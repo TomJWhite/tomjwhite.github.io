@@ -73,11 +73,39 @@ assert(!existsSync(resolve(repositoryRoot, "index.html.bak")), "Backup HTML must
 
 for (const portfolioEntryId of ["blake-twigden-website", "reconcile-gtfs-comparator"]) {
     assert(
-        html.includes(`class="portfolio-item" aria-labelledby="${portfolioEntryId}"`) &&
+        new RegExp(
+            `<article class="[^"]*\\bportfolio-item\\b[^"]*" aria-labelledby="${portfolioEntryId}"`
+        ).test(html) &&
             html.includes(`id="${portfolioEntryId}"`),
         `Missing dedicated portfolio entry: ${portfolioEntryId}`
     );
 }
+
+for (const requiredSection of ["evidence", "experience", "portfolio", "skills", "education"]) {
+    assert(
+        html.includes(`id="${requiredSection}"`),
+        `Missing positioning section: #${requiredSection}`
+    );
+}
+
+for (const caseStudyLabel of [
+    "Problem",
+    "My role",
+    "Key decisions",
+    "Trade-offs",
+    "Validation and outcome",
+]) {
+    assert(html.includes(`>${caseStudyLabel}<`), `Missing case-study label: ${caseStudyLabel}`);
+}
+
+assert(
+    html.includes("I turn ambiguous operational problems into dependable technical outcomes."),
+    "The opening positioning statement is missing"
+);
+assert(
+    html.includes('class="system-map"') && html.includes("Local browser boundary"),
+    "The Reconcile system-boundary explanation is missing"
+);
 
 assert(
     html.includes('href="https://reconcile-gtfs.tomjwhite.chatgpt.site/"'),

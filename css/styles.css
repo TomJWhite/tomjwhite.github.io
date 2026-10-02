@@ -10239,3 +10239,479 @@ button:focus-visible {
   }
 }
 
+/* Positioning and case-study components */
+:root {
+  --portfolio-ink: #24313a;
+  --portfolio-muted: #5f6972;
+  --portfolio-accent: #a94828;
+  --portfolio-accent-dark: #79321c;
+  --portfolio-deep: #16485d;
+  --portfolio-paper: #fbfaf8;
+  --portfolio-wash: #f2f5f5;
+  --portfolio-line: #d8dfe2;
+}
+
+body {
+  background: var(--portfolio-paper);
+  color: var(--portfolio-muted);
+}
+
+a {
+  color: var(--portfolio-accent);
+}
+
+a:hover {
+  color: var(--portfolio-accent-dark);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--portfolio-ink);
+}
+
+.text-primary {
+  color: var(--portfolio-accent) !important;
+}
+
+.bg-primary,
+.btn-danger {
+  background-color: var(--portfolio-accent) !important;
+}
+
+.btn-danger {
+  border-color: var(--portfolio-accent);
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+  background-color: var(--portfolio-accent-dark) !important;
+  border-color: var(--portfolio-accent-dark);
+}
+
+section.resume-section {
+  align-items: flex-start;
+  max-width: 82rem;
+}
+
+.hero-section {
+  align-items: center !important;
+  background:
+    radial-gradient(circle at 86% 22%, rgba(189, 93, 56, 0.1), transparent 32rem),
+    var(--portfolio-paper);
+}
+
+.eyebrow,
+.section-kicker,
+.project-meta,
+.case-label,
+.boundary-label {
+  margin-bottom: 0.65rem;
+  color: var(--portfolio-accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero-contact {
+  margin-top: 1rem;
+  margin-bottom: 2.25rem;
+}
+
+.hero-statement {
+  max-width: 58rem;
+  margin-bottom: 1.5rem;
+  color: var(--portfolio-deep);
+  font-family: "Saira Extra Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.08;
+}
+
+.hero-summary {
+  max-width: 57rem;
+  color: var(--portfolio-ink);
+  font-size: 1.08rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 2rem;
+  margin-bottom: 1.75rem;
+}
+
+.text-link {
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-thickness: 0.12em;
+  text-underline-offset: 0.22em;
+}
+
+.section-intro {
+  max-width: 48rem;
+  margin-bottom: 3rem;
+  color: var(--portfolio-ink);
+  font-size: 1.1rem;
+}
+
+.evidence-grid,
+.capability-grid,
+.supporting-grid,
+.case-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.evidence-card,
+.case-block,
+.capability-grid > section,
+.supporting-grid > article,
+.education-list > article {
+  border: 1px solid var(--portfolio-line);
+  border-radius: 0.5rem;
+  background: #fff;
+}
+
+.evidence-card {
+  padding: 1.5rem;
+}
+
+.evidence-number {
+  margin-bottom: 1rem;
+  color: var(--portfolio-accent);
+  font-family: "Saira Extra Condensed", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.evidence-card h3 {
+  margin-bottom: 0.85rem;
+  font-size: 1.3rem;
+}
+
+.evidence-card p:last-child,
+.role-fit p:last-child,
+.case-block p:last-child,
+.case-block ul:last-child,
+.supporting-grid p:last-child,
+.capability-grid .skill-list,
+.education-list p:last-child {
+  margin-bottom: 0;
+}
+
+.role-fit {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-left: 0.3rem solid var(--portfolio-accent);
+  background: var(--portfolio-wash);
+}
+
+.role-fit h3 {
+  margin-bottom: 0;
+}
+
+.role-fit > p {
+  color: var(--portfolio-ink);
+  font-weight: 700;
+  line-height: 1.75;
+}
+
+.experience-item + .experience-item {
+  margin-top: 3.5rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--portfolio-line);
+}
+
+.experience-heading,
+.case-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.experience-date {
+  flex: 0 0 auto;
+  font-weight: 800;
+}
+
+.experience-summary,
+.case-lead {
+  max-width: 60rem;
+  color: var(--portfolio-ink);
+  font-size: 1.08rem;
+}
+
+.experience-highlights {
+  max-width: 64rem;
+  padding-left: 1.25rem;
+}
+
+.experience-highlights li + li,
+.case-block li + li {
+  margin-top: 0.75rem;
+}
+
+.portfolio-item.case-study {
+  margin-top: 3rem;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  border: 1px solid var(--portfolio-line);
+  border-radius: 0.65rem;
+  background: #fff;
+  box-shadow: 0 0.5rem 1.5rem rgba(36, 49, 58, 0.06);
+}
+
+.portfolio-item.case-study + .portfolio-item.case-study {
+  margin-top: 4rem;
+}
+
+.case-heading {
+  margin-bottom: 1.5rem;
+}
+
+.case-heading h3 {
+  margin-bottom: 0;
+  font-size: clamp(1.65rem, 3vw, 2.2rem);
+}
+
+.case-heading .btn,
+.case-heading .text-link {
+  align-self: flex-start;
+  white-space: nowrap;
+}
+
+.case-grid {
+  margin-top: 2rem;
+}
+
+.case-block {
+  padding: 1.25rem;
+}
+
+.case-block ul {
+  padding-left: 1.1rem;
+}
+
+.case-grid-bottom {
+  margin-top: 1.25rem;
+}
+
+.system-design {
+  margin-top: 1.5rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border-radius: 0.5rem;
+  background: var(--portfolio-wash);
+}
+
+.system-design-copy {
+  max-width: 58rem;
+}
+
+.system-design h4 {
+  margin-bottom: 0.75rem;
+  font-size: 1.35rem;
+}
+
+.system-map {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.system-node {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 5.2rem;
+  padding: 0.9rem;
+  border: 1px solid #aebbc0;
+  border-radius: 0.4rem;
+  background: #fff;
+  text-align: center;
+}
+
+.system-node strong {
+  color: var(--portfolio-deep);
+}
+
+.system-node span {
+  margin-top: 0.25rem;
+  font-size: 0.84rem;
+}
+
+.source-node,
+.output-node {
+  border-color: rgba(169, 72, 40, 0.45);
+}
+
+.system-boundary {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.75rem 0.75rem 0.75rem;
+  border: 2px dashed #91a4aa;
+  border-radius: 0.5rem;
+}
+
+.boundary-label {
+  position: absolute;
+  top: 0.35rem;
+  left: 0.75rem;
+  margin: 0;
+  color: var(--portfolio-deep);
+  font-size: 0.68rem;
+}
+
+.system-arrow {
+  align-self: center;
+  color: var(--portfolio-accent);
+  font-size: 1.5rem;
+  font-weight: 800;
+  transform: rotate(90deg);
+}
+
+.case-takeaway {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-left: 0.25rem solid var(--portfolio-deep);
+  background: #eef4f6;
+  color: var(--portfolio-ink);
+}
+
+.portfolio-gallery-intro {
+  margin-top: 2.5rem;
+  font-weight: 700;
+}
+
+.portfolio-gallery figcaption {
+  color: var(--portfolio-muted);
+}
+
+.supporting-work {
+  margin-top: 5rem;
+}
+
+.supporting-work h3 {
+  margin-bottom: 1.5rem;
+}
+
+.supporting-grid > article,
+.capability-grid > section,
+.education-list > article {
+  padding: 1.5rem;
+}
+
+.supporting-grid h4 {
+  font-size: 1.25rem;
+}
+
+.powerbi-details {
+  margin-top: 1.5rem;
+}
+
+.powerbi-details summary {
+  cursor: pointer;
+  color: var(--portfolio-accent);
+  font-weight: 800;
+}
+
+.capability-grid .skill-list {
+  padding-left: 1.1rem;
+}
+
+.capability-grid h3 {
+  margin-bottom: 1rem;
+  font-size: 1.35rem;
+}
+
+.education-list {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  section.resume-section {
+    min-height: auto;
+  }
+
+  .hero-section {
+    min-height: 100vh !important;
+  }
+
+  .evidence-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .case-grid,
+  .capability-grid,
+  .supporting-grid,
+  .education-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .role-fit {
+    grid-template-columns: minmax(14rem, 0.65fr) minmax(0, 1.35fr);
+    align-items: center;
+  }
+
+  .experience-heading,
+  .case-heading {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1100px) {
+  .supporting-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .system-map {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .system-boundary {
+    flex: 2.2 1 0;
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .system-arrow {
+    transform: none;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero-statement {
+    font-size: 2.15rem;
+  }
+
+  .portfolio-item.case-study {
+    margin-right: -0.35rem;
+    margin-left: -0.35rem;
+  }
+
+  .role-fit,
+  .evidence-card,
+  .case-block,
+  .supporting-grid > article,
+  .capability-grid > section,
+  .education-list > article {
+    padding: 1.1rem;
+  }
+}
+
